@@ -1,0 +1,21 @@
+{
+    "python.pythonPath": "/usr/local/bin/python3",
+    "window.zoomLevel": 0,
+    "python.languageServer": "Pylance",
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-text",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html",
+        "vue": "html",
+        "twig": "html",
+        "javascript": "javascriptreact"
+    },
+    "editor.formatOnSave": true,
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+    }
+}

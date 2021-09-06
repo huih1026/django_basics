@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card text-center w-70 mx-atuo">
+        <div class="card-header display-4">{{ meetup.title }}</div>
+        <div class="card-body">
+            <h4> {{ meetup.location.name }} </h4>
+            <p> {{ meetup.description }} </p>
+        </div>
+
+        {% if success %}
+            <div class="alert alert-primary">
+                <strong>You have successfully registered this meetup!</strong>
+            </div>
+        {% else %}
+            <h2>Join Us!</h2>
+            <form action="{% url 'register-success' meetup.slug %}" method="POST">
+                {% csrf_token %}
+                    <ul>
+                        {{ form.as_ul }}
+                    </ul>
+                <button>Register Now</button>
+            </form>
+        {% endif %}
+        <hr>
+        <a href="{% url 'meetups' %}" class="btn btn-primary float-center">Explore More Meetups</a>
+    </div>
+</div>
+{% endblock %}

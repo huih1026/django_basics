@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if meetups %}
+        
+        <div class="card-columns"> 
+            {% for meetup in meetups %}
+                <div class="card m-2 p-2">
+                    <img class="card-img-top img-fluid" src="{{meetup.image.url}}" alt="{{meetup.title}}">
+                    <div class="card-body">
+                        <h6 class="card-title display-6">{{ meetup.title }}</h4>
+                        <p class="card-text">{{ meetup.description }}</p>
+                        <a href="{% url 'meetup-detail' meetup.slug %}" class="btn btn-primary float-right">More Info</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <h4 class="display-4">You dont have any meetups yet!</h4>
+    {% endif %}
+</div>
+{% endblock %}

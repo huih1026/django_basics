@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if not error%}
+    <div class="card">
+        <img src="https://source.unsplash.com/random/600x400" class="card-img-top img-fluid">
+        <div class="card-body text-center">
+            <h4 class="card-title">{{ meetup.title}}</h4>
+            <h6 class="card-title">{{ meetup.location.name }}</h6>
+            <p class="card-text">{{ meetup.description }}</p>
+            <a class="btn btn-primary float-center" href="{% url 'register-success' meetup.slug %}">Register This Meetup</a>
+            <p class="card-text">
+                <small class="text-muted">Last Updated 3 mins ago</small>
+            </p>
+        </div>
+    </div>
+
+    {% else %}
+        <h1 class="text-center display-4">Something wrong with this meetup, try later!</h1>
+    {% endif %}
+</div>
+{% endblock %}
