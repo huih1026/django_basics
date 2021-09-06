@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+html {
+    font-family: 'Courgette', cursive;
+    color: red;
+}
+
+/* this global just for syntax display, functionality won't work due to conflict with Bootstrap */

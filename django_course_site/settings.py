@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # this staticfiles tell Django to check static files in each app
     'django.contrib.staticfiles',
     'meetups',
 ]
@@ -121,13 +122,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# only used when in Production env
 STATIC_URL = '/static/'
-MEDIA_URL = '/files/'
 
+# Only added when have global static files
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+# ROOT file to specify where the static file servered
+# In Development, this will be done through Runserver.
+# In Production, this directory must be specified.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+# In Development env, no need to specify STATIC_ROOT since RUNSERVER will take care of
+# serving the static file, but for MEDIA, RUNSERVER does NOT have this functionality.
+# So must specify the image upload_to. MEDIA_ROOT is directory all the image into the system
+# will comes into the MEDIA_ROOT.
 MEDIA_ROOT = BASE_DIR / 'uploads'
+
+MEDIA_URL = '/files/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# NOTES:
+# MEDIA_ROOT: all the user uploads file will go into the system, then Django will store
+#             all the media file into MEDIA_ROOT. as long as system has the ImageField()
+#             then MEDIA_ROOT needs to be specified. (upload files will go BASE_DIA otherwise)
+
+# MEDIA_URL and STATIC_URL only are used in Production Environment
+# STATIC_ROOT ONLY specified in Production envrionment because RUNSERVER will help it.
