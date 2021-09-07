@@ -122,7 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# only used when in Production env
+# given when project was created initially
 STATIC_URL = '/static/'
 
 # Only added when have global static files
@@ -155,5 +155,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #             all the media file into MEDIA_ROOT. as long as system has the ImageField()
 #             then MEDIA_ROOT needs to be specified. (upload files will go BASE_DIA otherwise)
 
-# MEDIA_URL and STATIC_URL only are used in Production Environment
-# STATIC_ROOT ONLY specified in Production envrionment because RUNSERVER will help it.
+# MEDIA_URL also must be specified, give the Django the URL to retrive this image.
+#             EX. when render the image file on html: {{ obj.img.url }}, this will use the
+#                 MEDIA_URL.
